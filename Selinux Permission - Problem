@@ -1,0 +1,11 @@
+Manually start native service server on android device with the following steps:
+adb root
+adb remount
+adb push native_server /system/bin/
+adb shell setenforce 0
+adb shell
+cd /system/bin and execute chmod 777 native_server
+execute ./native_server to start native service
+
+Sometimes app can not connect to native service due to selinux permission problem. The step 6 setenforce 0 above used to put selinux in permissive mode and close selinux temporarily.
+When native_server is running you can install and start app to connect it
